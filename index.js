@@ -24,7 +24,7 @@ redisClient
 app.post("/set", async (req, res) => {
     const { key, value } = req.body;
 
-    const data = await redisClient.set(key, value);
+    const data = await redisClient.set(key, value, "EX", 3600);
 
     if (data === "OK") res.sendStatus(200);
     else res.sendStatus(500);
